@@ -22,3 +22,19 @@
 // // headerTitle.style.borderBottom='solid 3px black';
 // let header=document.getElementById('main-header');
 // header.style.borderBottom='solid 3px black';
+
+// var items=document.querySelectorAll('.list-group-item');
+var items=document.getElementsByClassName('list-group-item');
+// console.log(items);
+// console.log(items[0]);
+// items[0].innerHTML='This is new item by inner HTML';
+// items[0].style.fontWeight='bold';
+// items[2].style.backgroundColor='green';
+console.log(typeof items);
+for(let i=0;i<items.length;i++){
+    items[i].style.fontWeight='bold';
+}
+// items.forEach(item => {
+//     item.style.fontWeight='bold';   
+// });
+// items[0].textContent='This is new item by text content';
