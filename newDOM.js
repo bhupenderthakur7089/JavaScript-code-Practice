@@ -1,0 +1,24 @@
+// console.dir(document.head);
+// document.getElementById();
+// console.log(document.domain);
+// console.log(document.URL);
+// console.dir(document);
+// console.log(document.all);
+// console.log(document.all[8]);
+// document.all[8].textContent='Hello World';
+// console.log(document.forms);
+// // console.log(document.forms[0]);
+// console.log(document.links);
+// console.log(document.images);
+// console.log(document.getElementById('header-title'));
+// console.log(document.getElementById('main-header'));
+
+// let  headerTitle=document.getElementById('header-title');
+// console.log(headerTitle.textContent);
+// console.log(headerTitle.innerText);
+// // headerTitle.textContent='This is the heading';
+// // headerTitle.innerText='Goodbye';
+// // headerTitle.innerHTML='<h3>This is third Heading Size</h3>';
+// // headerTitle.style.borderBottom='solid 3px black';
+// let header=document.getElementById('main-header');
+// header.style.borderBottom='solid 3px black';

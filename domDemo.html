@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Demo</title>
+    <style>
+        body {
+            margin: 0;
+            background-image: url("pexels-pixabay-531880.jpg");
+        }
+
+        .call {
+            background-color: powderblue;
+            margin: 1% auto;
+            width: 45%;
+            padding: 2%;
+            box-shadow: 0 8px 20px 0 grey;
+            border-radius: 20px;
+        }
+
+        h1,
+        p {
+            text-align: center;
+        }
+        li{
+            list-style: none;
+        }
+        input {
+            padding: 2% 0 2% 1%;
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        button {
+            width: 100%;
+            border-radius: 10px;
+            padding: 2%;
+        }
+
+        .bg-dark {
+            background-color: #cccc;
+        }
+
+        .error {
+            background-color: orangered;
+            margin: 5%;
+            padding: 2%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="call">
+        <h1>DOM Demo</h1>
+        <p>Please enter the following details</p>
+        <div id="msg"></div>
+        <form id="my-form" action="#">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="John"><br><br>
+            <label for="mail">Email</label>
+            <input type="email" id="mail" placeholder="example@gmail.com"><br><br>
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="45123658"><br><br>
+            <label for="date">Date</label>
+            <input type="date" id="date">
+            <input type="submit" id="btn" value="Submit">
+        </form>
+        <ul id="items">
+            <!-- <li class="item">Item 1</li>
+            <li class="item">Item 2</li>
+            <li class="item">Item 3</li> -->
+        </ul>
+        <script>
+            let form = document.querySelector('#my-form');
+            let name = document.querySelector('#name');
+            let email = document.querySelector('#mail');
+            let msg = document.querySelector('#msg');
+            let details = document.querySelector('#items');
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                if (name.value == '' || email.value == '') {
+                    msg.classList.add('error');
+                    msg.innerHTML = "Please Enter your Name and Email";
+                    setTimeout(() => msg.remove(), 3000);
+                }
+                else {
+                    let li = document.createElement('li');
+                    li.appendChild(document.createTextNode(`${name.value} : ${email.value}`));
+                    details.appendChild(li);
+                }
+                name.value="";
+                email.value=""
+            });
+            let btn = document.querySelector('#btn');
+            btn.style.margin = '5% 0 0 0';
+            // btn.addEventListener('click', (e) => {
+            //     e.preventDefault();
+            //     document.querySelector('.call').classList.add('bg-dark');
+            //     let inputs=document.querySelectorAll('input');
+            //     inputs.forEach(input => {
+            //         console.log(input.value);
+            //     });
+            // });
+        </script>
+    </div>
+</body>
+
+</html>
