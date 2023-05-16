@@ -24,15 +24,17 @@
 // header.style.borderBottom='solid 3px black';
 
 // var items=document.querySelectorAll('.list-group-item');
-var items=document.getElementsByClassName('list-group-item');
-// console.log(items);
+// var items=document.getElementsByClassName('list-group-item');
+var items=document.getElementsByTagName('li');
+console.log(items);
 // console.log(items[0]);
 // items[0].innerHTML='This is new item by inner HTML';
 // items[0].style.fontWeight='bold';
 // items[2].style.backgroundColor='green';
-console.log(typeof items);
+// console.log(typeof items);
 for(let i=0;i<items.length;i++){
     items[i].style.fontWeight='bold';
+    items[i].style.backgroundColor='#f4f4f4';
 }
 // items.forEach(item => {
 //     item.style.fontWeight='bold';   
