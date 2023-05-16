@@ -23,20 +23,32 @@
 // let header=document.getElementById('main-header');
 // header.style.borderBottom='solid 3px black';
 
-// var items=document.querySelectorAll('.list-group-item');
+var item2=document.querySelector('.list-group-item:nth-child(2)');
+var item3=document.querySelector('.list-group-item:nth-child(3)');
 // var items=document.getElementsByClassName('list-group-item');
-var items=document.getElementsByTagName('li');
-console.log(items);
+// var items=document.getElementsByTagName('li');
+// console.log(typeof items);
 // console.log(items[0]);
 // items[0].innerHTML='This is new item by inner HTML';
 // items[0].style.fontWeight='bold';
-// items[2].style.backgroundColor='green';
+item2.style.backgroundColor='green';
+item3.style.display='none';
+// items.style.display='none';
 // console.log(typeof items);
-for(let i=0;i<items.length;i++){
-    items[i].style.fontWeight='bold';
-    items[i].style.backgroundColor='#f4f4f4';
-}
+// for(let i=0;i<items.length;i++){
+//     items[i].style.fontWeight='bold';
+//     items[i].style.backgroundColor='#f4f4f4';
+// }
 // items.forEach(item => {
 //     item.style.fontWeight='bold';   
 // });
 // items[0].textContent='This is new item by text content';
+let items = document.querySelectorAll('li');
+for(let i=0;i<items.length;i++){
+    if((i+1)%2==1){
+        items[i].style.backgroundColor='green';
+    }
+}
+// items.forEach(item => {
+//     item.style.backgroundColor='#f3f3f3';
+// });
