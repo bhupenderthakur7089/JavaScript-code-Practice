@@ -1,11 +1,11 @@
 let form=document.querySelector('#addForm');
 let itemList=document.querySelector('#items');
-// let filter=document.querySelector('#filter');
+let filter=document.querySelector('#filter');
 
 //add event listeners
 form.addEventListener('submit', addItem);
 itemList.addEventListener('click', deleteBtn);
-// filter.addEventListener('keyup',filterItems);
+filter.addEventListener('keyup',filterItems);
 
 function addItem(e){
     e.preventDefault();
@@ -36,11 +36,26 @@ function addItem(e){
 }
 
 function deleteBtn(e){
-    console.log(e.target.parentElement);
+    console.log(e.target);
     if(e.target.classList.contains('delete')){
         if(confirm('Are you sure you want to delete the Item ?')){
             let li=e.target.parentElement;
             itemList.removeChild(li);
         }
     }
+}
+
+
+  function filterItems(e){
+    let text=e.target.value.toLowerCase();
+    let items=itemList.querySelectorAll('li');
+    items.forEach(item => {
+        if(item.childNodes[0].textContent.toLowerCase().indexOf(text)!=-1){
+            item.style.display='block';
+        }
+        else{
+            item.style.display='none';
+        }
+    });
+
 }
