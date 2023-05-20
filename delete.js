@@ -20,11 +20,16 @@ function addItem(e){
     //create delete button
     let deleteBtn=document.createElement('button');
     //add class to del button
-    deleteBtn.className='btn btn-danger btn-sm float-end delete';
+    deleteBtn.className='btn btn-danger btn-sm  float-end';
     //add text to the del button
     deleteBtn.appendChild(document.createTextNode('X'));
+    //add edit button
+    let editBtn=document.createElement('button');
+    editBtn.className='btn btn-success btn-sm margin-right float-end';
+    editBtn.appendChild(document.createTextNode('Edit'));
     //add del button to the list
     li.appendChild(deleteBtn);
+    li.appendChild(editBtn);
 
     //add li to the Items list
     itemList.appendChild(li);
