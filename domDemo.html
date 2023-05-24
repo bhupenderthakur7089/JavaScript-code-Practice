@@ -54,7 +54,7 @@
 
 <body>
     <div class="call">
-        <h1>DOM Demo</h1>
+        <h1>Dynamic Web Page</h1>
         <p>Please enter the following details</p>
         <div id="msg"></div>
         <form id="my-form" action="#">
@@ -77,6 +77,8 @@
             let form = document.querySelector('#my-form');
             let name = document.querySelector('#name');
             let email = document.querySelector('#mail');
+            let phoneNo = document.querySelector('#phone');
+            let date=document.querySelector('#date');
             let msg = document.querySelector('#msg');
             let details = document.querySelector('#items');
 
@@ -88,23 +90,25 @@
                     setTimeout(() => msg.remove(), 3000);
                 }
                 else {
-                    let li = document.createElement('li');
-                    li.appendChild(document.createTextNode(`${name.value} : ${email.value}`));
-                    details.appendChild(li);
+                    // let li = document.createElement('li');
+                    // li.appendChild(document.createTextNode(`${name.value} : ${email.value}`));
+                    // details.appendChild(li);
+                    localStorage.setItem('name',name.value);
+                    localStorage.setItem('email',email.value);
+                    localStorage.setItem('contact',phoneNo.value);
+                    localStorage.setItem('date',date.value);
                 }
                 name.value="";
                 email.value=""
             });
             let btn = document.querySelector('#btn');
             btn.style.margin = '5% 0 0 0';
-            // btn.addEventListener('click', (e) => {
-            //     e.preventDefault();
-            //     document.querySelector('.call').classList.add('bg-dark');
-            //     let inputs=document.querySelectorAll('input');
-            //     inputs.forEach(input => {
-            //         console.log(input.value);
-            //     });
-            // });
+
+            // localStorage.setItem('name','hello');
+            // sessionStorage.setItem('name','there');
+            // console.log(typeof localStorage.getItem('name'));
+            // console.log(localStorage.getItem('name'));
+            // document.cookie="name=bhupender;expires="+ new Date(2023,11,29).toUTCString();
         </script>
     </div>
 </body>
