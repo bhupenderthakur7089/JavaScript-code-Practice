@@ -93,10 +93,21 @@
                     // let li = document.createElement('li');
                     // li.appendChild(document.createTextNode(`${name.value} : ${email.value}`));
                     // details.appendChild(li);
-                    localStorage.setItem('name',name.value);
-                    localStorage.setItem('email',email.value);
-                    localStorage.setItem('contact',phoneNo.value);
-                    localStorage.setItem('date',date.value);
+                    // localStorage.setItem('name',name.value);
+                    // localStorage.setItem('email',email.value);
+                    // localStorage.setItem('contact',phoneNo.value);
+                    // localStorage.setItem('date',date.value);
+                    let user={
+                        name: name.value,
+                        email: email.value,
+                        contact: phoneNo.value,
+                        date: date.value
+                    };
+
+                    let userSerialized =JSON.stringify(user);
+                    localStorage.setItem("user",userSerialized);
+                    let userDeserialized=JSON.parse(localStorage.getItem("user"));
+                    console.log(userDeserialized);
                 }
                 name.value="";
                 email.value=""
