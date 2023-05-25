@@ -59,7 +59,7 @@
         <h1>Dynamic Web Page</h1>
         <p>Please enter the following details</p>
         <div id="msg"></div>
-        <form id="my-form" action="#">
+        <form id="myForm" action="#">
             <label for="name">Name</label>
             <input type="text" name="userName" id="name" placeholder="John"><br><br>
             <label for="email">Email</label>
@@ -73,7 +73,7 @@
         <ul id="items">
         </ul>
         <script>
-            let form = document.querySelector('#my-form');
+            let form = document.querySelector('#myForm');
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 name = e.target.name.value;
@@ -100,9 +100,17 @@
                 
                 let deleteBtn=document.createElement('input');
                 deleteBtn.type='button';
+                deleteBtn.name='Delete';
                 deleteBtn.value='Delete';
                 deleteBtn.onclick=function() {deleteList(this);};
+                let editBtn=document.createElement('input');
+                editBtn.type='button';
+                editBtn.name='Edit';
+                editBtn.value='Edit';
+                editBtn.onclick=function() {editList(this);};
+
                 list.appendChild(deleteBtn);
+                list.appendChild(editBtn);
                 items.appendChild(list);
             }
             function deleteList(deleteBtn){
@@ -111,6 +119,20 @@
                 listName=list.name;
                 localStorage.removeItem(listName);
                 items.removeChild(list);
+            }
+
+            function editList(editBtn){
+                let form=document.querySelector('#myForm');
+                let items = editBtn.parentElement.parentElement;
+                let list = editBtn.parentElement;
+                listName=list.name;
+                let user=JSON.parse(localStorage.getItem(listName));
+                localStorage.removeItem(listName);
+                items.removeChild(list);
+                form.name.value=user.name;
+                form.email.value=user.email;
+                form.contact.value=user.contact;
+                form.date.value=user.date;
             }
         </script>
     </div>
