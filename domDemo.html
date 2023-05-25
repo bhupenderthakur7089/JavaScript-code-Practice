@@ -94,10 +94,23 @@
             });
             function displayUser(user){
                 let items=document.querySelector('#items');
-                let list=document.createElement('li');
-                list.name='user';
+                let list=document.createElement('li');                
+                list.name=user.email;
                 list.textContent=user.name+'-'+user.email+'-'+user.contact;
+                
+                let deleteBtn=document.createElement('input');
+                deleteBtn.type='button';
+                deleteBtn.value='Delete';
+                deleteBtn.onclick=function() {deleteList(this);};
+                list.appendChild(deleteBtn);
                 items.appendChild(list);
+            }
+            function deleteList(deleteBtn){
+                let items = deleteBtn.parentElement.parentElement;
+                let list = deleteBtn.parentElement;
+                listName=list.name;
+                localStorage.removeItem(listName);
+                items.removeChild(list);
             }
         </script>
     </div>
