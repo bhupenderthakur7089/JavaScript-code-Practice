@@ -25,9 +25,11 @@
         p {
             text-align: center;
         }
-        li{
+
+        li {
             list-style: none;
         }
+
         input {
             padding: 2% 0 2% 1%;
             width: 100%;
@@ -59,67 +61,44 @@
         <div id="msg"></div>
         <form id="my-form" action="#">
             <label for="name">Name</label>
-            <input type="text" id="name" placeholder="John"><br><br>
-            <label for="mail">Email</label>
-            <input type="email" id="mail" placeholder="example@gmail.com"><br><br>
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" placeholder="45123658"><br><br>
+            <input type="text" name="userName" id="name" placeholder="John"><br><br>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="example@gmail.com"><br><br>
+            <label for="contact">Phone Number</label>
+            <input type="tel" name="contact" id="contact" placeholder="8894749220"><br><br>
             <label for="date">Date</label>
-            <input type="date" id="date">
-            <input type="submit" id="btn" value="Submit">
+            <input type="date" name="date" id="date">
+            <input type="submit" id="btn" value="Submit" style="margin:5% 0 0 0">
         </form>
         <ul id="items">
-            <!-- <li class="item">Item 1</li>
-            <li class="item">Item 2</li>
-            <li class="item">Item 3</li> -->
         </ul>
         <script>
             let form = document.querySelector('#my-form');
-            let name = document.querySelector('#name');
-            let email = document.querySelector('#mail');
-            let phoneNo = document.querySelector('#phone');
-            let date=document.querySelector('#date');
-            let msg = document.querySelector('#msg');
-            let details = document.querySelector('#items');
-
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
-                if (name.value == '' || email.value == '') {
-                    msg.classList.add('error');
-                    msg.innerHTML = "Please Enter your Name and Email";
-                    setTimeout(() => msg.remove(), 3000);
+                name = e.target.name.value;
+                email = e.target.email.value;
+                contact = e.target.contact.value;
+                date = e.target.date.value;
+                let user = {
+                    name,
+                    email,
+                    contact,
+                    date
                 }
-                else {
-                    // let li = document.createElement('li');
-                    // li.appendChild(document.createTextNode(`${name.value} : ${email.value}`));
-                    // details.appendChild(li);
-                    // localStorage.setItem('name',name.value);
-                    // localStorage.setItem('email',email.value);
-                    // localStorage.setItem('contact',phoneNo.value);
-                    // localStorage.setItem('date',date.value);
-                    let user={
-                        name: name.value,
-                        email: email.value,
-                        contact: phoneNo.value,
-                        date: date.value
-                    };
-
-                    let userSerialized =JSON.stringify(user);
-                    localStorage.setItem("user",userSerialized);
-                    let userDeserialized=JSON.parse(localStorage.getItem("user"));
-                    console.log(userDeserialized);
-                }
-                name.value="";
-                email.value=""
+                
+                localStorage.setItem(user.email, JSON.stringify(user));
+                name.value = "";
+                email.value = "";
+                displayUser(user);
             });
-            let btn = document.querySelector('#btn');
-            btn.style.margin = '5% 0 0 0';
-
-            // localStorage.setItem('name','hello');
-            // sessionStorage.setItem('name','there');
-            // console.log(typeof localStorage.getItem('name'));
-            // console.log(localStorage.getItem('name'));
-            // document.cookie="name=bhupender;expires="+ new Date(2023,11,29).toUTCString();
+            function displayUser(user){
+                let items=document.querySelector('#items');
+                let list=document.createElement('li');
+                list.name='user';
+                list.textContent=user.name+'-'+user.email+'-'+user.contact;
+                items.appendChild(list);
+            }
         </script>
     </div>
 </body>
