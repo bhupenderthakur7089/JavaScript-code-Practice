@@ -77,7 +77,7 @@
 
             axios.post("https://crudcrud.com/api/5a442008d42549fca106139db0878129/appointments", appointment)
                 .then(res => {
-                    console.log(res.data);
+                     console.log(res.data);
                     displayExpense(res.data);
                 });
             // localStorage.setItem(expense.category, JSON.stringify(expense));
@@ -121,6 +121,7 @@
             let items = deleteBtn.parentElement.parentElement.parentElement.parentElement;
             let list = deleteBtn.parentElement.parentElement.parentElement;
             listName = list.name;
+            
             localStorage.removeItem(listName);
             items.removeChild(list);
         }
@@ -130,15 +131,23 @@
             let items = editBtn.parentElement.parentElement.parentElement.parentElement;
             let list = editBtn.parentElement.parentElement.parentElement;
             listName = list.name;
-           
-            let expense = JSON.parse(localStorage.getItem(listName));
-            localStorage.removeItem(listName);
-            items.removeChild(list);
-            form.name.value = res.data.name;
-            form.email.value = res.data.email;
-            form.contact.value = res.data.contact;
+            axios.get(`https://crudcrud.com/api/5a442008d42549fca106139db0878129/appointments/${listName}`)
+                .then(res => {
+                    items.removeChild(list);
+                    form.name.value = res.data.name;
+                    form.email.value = res.data.email;
+                    form.contact.value = res.data.contact;
+                })
 
         }
+        window.addEventListener('DOMContentLoaded',()=>{
+            axios.get("https://crudcrud.com/api/5a442008d42549fca106139db0878129/appointments")
+            .then(res=>{
+                for(let i=0;i<res.data.length;i++){
+                    displayExpense(res.data[i]);
+                }
+            })
+        })
     </script>
     </div>
 </body>
