@@ -64,6 +64,7 @@
     <script src="axios.min.js"></script>
     <script>
         let form = document.querySelector('#myForm');
+        
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             name = e.target.name.value;
@@ -74,7 +75,6 @@
                 email,
                 contact
             }
-
             axios.post("https://crudcrud.com/api/5a442008d42549fca106139db0878129/appointments", appointment)
                 .then(res => {
                     console.log(res.data);

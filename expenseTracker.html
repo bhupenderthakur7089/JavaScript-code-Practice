@@ -68,6 +68,14 @@
 
     </ul>
     <script>
+        window.addEventListener('DOMContentLoaded',()=>{
+            for(let i=0;i<localStorage.length;i++){
+                let key=localStorage.key(i);
+                console.log(key);
+                let obj=JSON.parse(localStorage.getItem(key));
+                displayExpense(obj);
+            }
+        })
         let form = document.querySelector('#myForm');
         form.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -130,6 +138,7 @@
             let items = editBtn.parentElement.parentElement.parentElement.parentElement;
             let list = editBtn.parentElement.parentElement.parentElement;
             listName = list.name;
+
             let expense = JSON.parse(localStorage.getItem(listName));
             localStorage.removeItem(listName);
             items.removeChild(list);
